@@ -28,7 +28,7 @@ public class HotTokenJon {
         // 0. Kafka相关配置
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", "192.168.10.11:9092");
-        properties.setProperty("group.id", "Flink01_Source_Kafka");
+        properties.setProperty("group.id", "Flink");
         properties.setProperty("auto.offset.reset", "latest");
 
         // 1. 创建执行环境
@@ -50,6 +50,7 @@ public class HotTokenJon {
                     public boolean filter(String value) throws Exception {
                         // 解析JSON字符串并获取"holders"字段的值
                         // 假设你使用的是Gson库
+//                        System.out.println(value);
                         JSONObject jsonObject = JSON.parseObject(value);
                         Double volumn24 = jsonObject.getDouble("volumn24");
                         Double circulatingMarketCap = jsonObject.getDouble("circulatingMarketCap");
